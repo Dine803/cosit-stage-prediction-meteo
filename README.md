@@ -51,7 +51,8 @@ Contrairement à une prévision classique qui utiliserait l'historique récent p
 │   ├── __init__.py
 │   ├── config.py
 │   ├── data_loading.py
-│   └── features.py
+│   ├── features.py
+│   └── verification_representativite.py  # script de comparaison Open-Meteo vs NASA POWER
 └── reports/
     └── rapport_de_stage.docx             # rapport de stage et présentation à venir
 ```

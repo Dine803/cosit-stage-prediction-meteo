@@ -35,15 +35,24 @@ Contrairement à une prévision classique qui utiliserait l'historique récent p
 ## Structure du dépôt
 
 ```
-├── data/                    # Données brutes et nettoyées (CSV)
+├── .gitignore
+├── README.md
+├── data/
+│   ├── data_OPEN_METEO.csv
+│   └── data_NASA_POWER.csv
 ├── notebooks/
-│   ├── modele_temperature.ipynb
-│   └── modele_pluie.ipynb
-├── models/                  # Modèles entraînés sauvegardés (.pkl)
-│   ├── model_temperature.pkl
-│   └── model_pluie.pkl
-├── app/                     # Code du site web de déploiement
-├── src/                     # Fonctions Python partagées (nettoyage, features)
-├── reports/                 # Rapport de stage, présentations
-└── README.md
+│   └── .gitkeep              # à remplacer par modele_temperature.ipynb et modele_pluie.ipynb
+├── models/
+│   └── .gitkeep              # à remplacer par model_temperature.pkl et model_pluie.pkl une fois entraînés
+├── app/
+│   ├── app.py
+│   └── requirements.txt
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── data_loading.py
+│   ├── features.py
+│   └── verification_representativite.py  # script de comparaison Open-Meteo vs NASA POWER
+└── reports/
+    └── rapport_de_stage.docx             # rapport de stage et présentation à venir
 ```

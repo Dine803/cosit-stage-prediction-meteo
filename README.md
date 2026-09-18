@@ -18,8 +18,8 @@ Contrairement à une prévision classique qui utiliserait l'historique récent p
 
 ## Équipe
 
-- SYLLA IMOROU Izou Dine — modèle de [régression/classification, à préciser]
-- DASSI Mari Pascal — modèle de [régression/classification, à préciser]
+- SYLLA IMOROU Izou Dine — modèle de régression
+- DASSI Mari Pascal — modèle de classification
 - ADOGOUN Déo Gracias Mahugnon — déploiement (site web)
 - Tuteur de stage : Mr Winceslas ADJIHANOU
 
@@ -41,9 +41,11 @@ Contrairement à une prévision classique qui utiliserait l'historique récent p
 │   ├── data_OPEN_METEO.csv
 │   └── data_NASA_POWER.csv
 ├── notebooks/
-│   └── .gitkeep              # à remplacer par modele_temperature.ipynb et modele_pluie.ipynb
+│   ├── modele_temperature.ipynb
+│   └── modele_pluie.ipynb              
 ├── models/
-│   └── .gitkeep              # à remplacer par model_temperature.pkl et model_pluie.pkl une fois entraînés
+│   ├── model_temperature.pkl
+│   └── model_pluie.pkl           
 ├── app/
 │   ├── app.py
 │   └── requirements.txt

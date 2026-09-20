@@ -37,24 +37,20 @@ Contrairement à une prévision classique qui utiliserait l'historique récent p
 ```
 ├── .gitignore
 ├── README.md
+├── lancer_demo.sh          
 ├── data/
-│   ├── data_OPEN_METEO.csv
-│   └── data_NASA_POWER.csv
+│   └── data_OPEN_METEO.csv
 ├── notebooks/
 │   ├── modele_temperature.ipynb
 │   └── modele_pluie.ipynb              
 ├── models/
 │   ├── model_temperature.pkl
-│   └── model_pluie.pkl           
+│   └── model_pluie.pkl            
 ├── app/
-│   ├── app.py
+│   ├── app.py              
 │   └── requirements.txt
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── data_loading.py
-│   ├── features.py
-│   └── verification_representativite.py  # script de comparaison Open-Meteo vs NASA POWER
-└── reports/
-    └── rapport_de_stage.docx             # rapport de stage et présentation à venir
+└── src/
+    ├── __init__.py
+    ├── config.py
+    └── features.py
 ```

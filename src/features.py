@@ -1,12 +1,31 @@
 """
 Préparation des features, commune aux deux modèles.
-À COMPLÉTER une fois les features définitives choisies.
+Renomme les colonnes brutes en noms simples, et convertit
+sunshine_duration de secondes en heures.
 """
 
-from src.config import FEATURES
+from src.config import (
+    COLONNE_HUMIDITE, COLONNE_PRESSION, COLONNE_VENT_VITESSE,
+    COLONNE_VENT_RAFALES, COLONNE_NUAGES, COLONNE_ENSOLEILLEMENT_BRUTE,
+    COLONNE_TEMPERATURE, COLONNE_PRECIPITATION, SEUIL_PLUIE_MM, SEUIL_DECISION_PLUIE,
+)
 
 
 def preparer_features(df):
-    """Sélectionne et prépare les colonnes utilisées comme features."""
-    # TODO : ajouter ici l'encodage/normalisation si nécessaire
-    return df[FEATURES]
+    """Renomme les colonnes et convertit sunshine_duration en heures."""
+    df = df.copy()
+    df["humidite"] = df[COLONNE_HUMIDITE]
+    df["pression"] = df[COLONNE_PRESSION]
+    df["vent_vitesse"] = df[COLONNE_VENT_VITESSE]
+    df["vent_rafales"] = df[COLONNE_VENT_RAFALES]
+    df["nuages"] = df[COLONNE_NUAGES]
+    df["sunshine_duration_heures"] = df[COLONNE_ENSOLEILLEMENT_BRUTE] / 3600
+    return df
+
+
+def creer_cible_temperature(df):
+    return df[COLONNE_TEMPERATURE]
+
+
+def creer_cible_pluie(df):
+    return (df[COLONNE_PRECIPITATION] > SEUIL_PLUIE_MM).astype(int)

@@ -7,7 +7,8 @@ sunshine_duration de secondes en heures.
 from src.config import (
     COLONNE_HUMIDITE, COLONNE_PRESSION, COLONNE_VENT_VITESSE,
     COLONNE_VENT_RAFALES, COLONNE_NUAGES, COLONNE_ENSOLEILLEMENT_BRUTE,
-    COLONNE_TEMPERATURE, COLONNE_PRECIPITATION, SEUIL_PLUIE_MM, SEUIL_DECISION_PLUIE,
+    COLONNE_TEMPERATURE, COLONNE_PRECIPITATION, SEUIL_PLUIE_MM,
+    CIBLE_TEMPERATURE, CIBLE_PLUIE,
 )
 
 
@@ -24,8 +25,8 @@ def preparer_features(df):
 
 
 def creer_cible_temperature(df):
-    return df[COLONNE_TEMPERATURE]
-
+    return df[COLONNE_TEMPERATURE].rename(CIBLE_TEMPERATURE)
 
 def creer_cible_pluie(df):
-    return (df[COLONNE_PRECIPITATION] > SEUIL_PLUIE_MM).astype(int)
+    cible = (df[COLONNE_PRECIPITATION] > SEUIL_PLUIE_MM).astype(int)
+    return cible.rename(CIBLE_PLUIE)

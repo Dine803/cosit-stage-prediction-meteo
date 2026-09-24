@@ -7,20 +7,21 @@ la technologie (Streamlit ou Flask) choisie en équipe.
 import streamlit as st        
 
 
-from src.data_loading import charger_donnees
-from src.analysis import (
+from data_loading import charger_donnees
+from features import preparer_features
+from analysis import (
 statistiques_descriptives,
 temperature_moyenne_mensuelle,
 matrice_correlation,
 test_saison_seche_vs_pluvieuse,
 )
-from src.visualization import (
+from visualization import (
 graphique_temperature_mensuelle,
-graphique_precipitations_par_station,
+#graphique_precipitations_par_station,
 heatmap_correlation,
 boxplot_saisonnier,
 )
-from src.model import (
+from model import (
 preparer_donnees_modele,
 entrainer_modele,
 predire_pluie,
@@ -32,8 +33,12 @@ st.set_page_config(page_title="MétéoAnalysis", layout="wide")
 #initialiser_base()
 
 # Chargement des données 
-df= charger_donnees
-st.title("MétéoAnalysis -- Tableau de bord climatique du Bénin")
+df= charger_donnees()
+df= preparer_features(df)
+
+
+
+st.title("MétéoAnalysis  Tableau de bord climatique du Bénin")
 
 # --- Barre latérale de navigation ---
 page = st.sidebar.radio(
@@ -45,7 +50,7 @@ if page == "Vue d'ensemble":
     col1, col2, col3 = st.columns(3)
     col1.metric("Température moyenne", f"{ df['temperature'].mean(): .1f} °C")
     col2.metric("Précipitations cumulées", f"{ df['precipitation'].sum(): .0f} mm")
-    col3.metric("Stations suivies", df["nom_station"].nunique())
+    #col3.metric("Stations suivies", df["nom_station"].nunique())
     st.dataframe(df.tail(20))
 
 elif page == "Analyse statistique":
@@ -61,7 +66,7 @@ elif page == "Visualisations":
         st.pyplot(graphique_temperature_mensuelle(temperature_moyenne_mensuelle(df)))
         st.pyplot(heatmap_correlation(matrice_correlation(df)))
     with col2:
-        st.pyplot(graphique_precipitations_par_station(df))
+        #st.pyplot(graphique_precipitations_par_station(df))
         st.pyplot(boxplot_saisonnier(df))
 
 elif page == "Modèle IA":
@@ -76,9 +81,3 @@ elif page == "Modèle IA":
 if st.button("Prédire"):
   resultat = predire_pluie(modele, temperature, humidite, vent)
   st.success(resultat)
-
-
-
-
-
-

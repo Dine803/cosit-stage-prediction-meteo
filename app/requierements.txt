@@ -1,3 +1,0 @@
-# TODO : compléter selon la technologie choisie
-# Exemple si Streamlit : streamlit, scikit-learn, joblib, pandas
-# Exemple si Flask : flask, scikit-learn, joblib, pandas

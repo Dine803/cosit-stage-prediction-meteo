@@ -1,0 +1,22 @@
+# Environnements virtuels
+venv/
+env/
+.venv/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Données volumineuses (à ne pas versionner sur GitHub)
+data/*.csv
+!data/.gitkeep
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Variables d'environnement / secrets
+.env
